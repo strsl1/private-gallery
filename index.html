@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "background": "#000000",
+          "surface": "#121212",
+          "on-surface": "#ffffff",
+          "primary": "#ffffff",
+          "secondary": "#a8a8a8",
+          "button-bg": "#363636",
+          "button-hover": "#262626"
+        },
+        fontFamily: {
+          "headline": ["Inter", "sans-serif"],
+          "body": ["Inter", "sans-serif"],
+          "label": ["Inter", "sans-serif"]
+        },
+        borderRadius: {"DEFAULT": "8px", "lg": "12px", "xl": "16px", "full": "9999px"},
+      },
+    },
+  }
+</script>
+<style>
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+body {
+    background-color: #000000;
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+}
+.gallery-grid {
+    display: grid;
+    gap: 4px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center;
+}
+.aspect-square {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+}
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+::-webkit-scrollbar-thumb {
+    background: #363636;
+    border-radius: 10px;
+}
+</style>
+</head>
+<body class="font-body selection:bg-white selection:text-black">
+<div class="max-w-4xl mx-auto px-4 pt-12">
+  <!-- Gallery Title & Buttons -->
+  <header class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-semibold">Gallery</h1>
+    <div class="flex gap-2">
+      <button class="bg-button-bg hover:bg-button-hover px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors">1</button>
+      <button class="bg-button-bg hover:bg-button-hover px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors">2</button>
+      <button class="bg-button-bg hover:bg-button-hover px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors">3</button>
+    </div>
+  </header>
+
+  <!-- Gallery Grid -->
+  <main class="w-full pb-12">
+    <div class="gallery-grid">
+      <div class="group relative overflow-hidden bg-neutral-900 cursor-pointer aspect-square">
+        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" data-alt="Stunning aerial view" src="1.jpg"/>
+      </div>
+      <div class="group relative overflow-hidden bg-neutral-900 cursor-pointer aspect-square">
+        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" data-alt="Modern minimalist skyscraper" src="2.jpg"/>
+      </div>
+      <div class="group relative overflow-hidden bg-neutral-900 cursor-pointer aspect-square">
+        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" data-alt="Deep forest interior" src="3.jpg"/>
+      </div>
+      <div class="group relative overflow-hidden bg-neutral-900 cursor-pointer aspect-square">
+        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" data-alt="Misty valley landscape" src="4.jpg"/>
+      </div>
+      <div class="group relative overflow-hidden bg-neutral-900 cursor-pointer aspect-square">
+        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" data-alt="Minimal concrete spiral staircase" src="5.jpg"/>
+      </div>
+      <div class="group relative overflow-hidden bg-neutral-900 cursor-pointer aspect-square">
+        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" data-alt="Panoramic view of a serene lake" src="6.jpg"/>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Lightbox Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 opacity-0 pointer-events-none transition-opacity duration-300" id="lightbox">
+  <button class="absolute top-8 right-8 text-white hover:opacity-50 transition-opacity z-50">
+    <span class="material-symbols-outlined text-4xl">close</span>
+  </button>
+  <div class="relative w-full h-full p-4 md:p-12 flex items-center justify-center">
+    <img class="max-w-full max-h-[80vh] object-contain" id="lightbox-img" src=""/>
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 md:left-12 md:translate-x-0 text-white text-center md:text-left">
+      <p class="font-label text-[10px] uppercase tracking-[0.2em] text-neutral-500 mb-2">Metadata</p>
+      <div class="flex gap-6 font-label text-xs uppercase text-neutral-300">
+        <span>ISO 100</span>
+        <span>f/2.8</span>
+        <span>1/250s</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const gridItems = document.querySelectorAll('.gallery-grid > div');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = lightbox.querySelector('button');
+
+  gridItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const imgSrc = item.querySelector('img').src;
+      lightboxImg.src = imgSrc;
+      lightbox.classList.remove('opacity-0', 'pointer-events-none');
+      lightbox.classList.add('opacity-100', 'pointer-events-auto');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.add('opacity-0', 'pointer-events-none');
+    lightbox.classList.remove('opacity-100', 'pointer-events-auto');
+    document.body.style.overflow = '';
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeBtn.click();
+  });
+</script>
+</body>
+</html>
