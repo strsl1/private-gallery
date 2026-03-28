@@ -63,42 +63,34 @@ body {
 </head>
 <body class="font-body selection:bg-white selection:text-black">
 <div class="max-w-4xl mx-auto px-4 pt-12">
-  <!-- Gallery Title & Buttons -->
-  <header class="flex justify-between items-center mb-6">
+  <header class="mb-6">
     <h1 class="text-2xl font-semibold">Gallery</h1>
-    <div class="flex gap-2">
-      <button class="bg-button-bg hover:bg-button-hover px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors">1</button>
-      <button class="bg-button-bg hover:bg-button-hover px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors">2</button>
-      <button class="bg-button-bg hover:bg-button-hover px-4 py-1.5 rounded-lg text-sm font-semibold transition-colors">3</button>
-    </div>
   </header>
 
-  <!-- Gallery Grid -->
   <main class="w-full pb-12">
     <div class="gallery-grid">
       <div class="group relative overflow-hidden bg-neutral-900 cursor-pointer aspect-square">
-        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" data-alt="Stunning aerial view" src="1.jpg"/>
+        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" src="1.jpg"/>
       </div>
       <div class="group relative overflow-hidden bg-neutral-900 cursor-pointer aspect-square">
-        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" data-alt="Modern minimalist skyscraper" src="2.jpg"/>
+        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" src="2.jpg"/>
       </div>
       <div class="group relative overflow-hidden bg-neutral-900 cursor-pointer aspect-square">
-        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" data-alt="Deep forest interior" src="3.jpg"/>
+        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" src="3.jpg"/>
       </div>
       <div class="group relative overflow-hidden bg-neutral-900 cursor-pointer aspect-square">
-        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" data-alt="Misty valley landscape" src="4.jpg"/>
+        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" src="4.jpg"/>
       </div>
       <div class="group relative overflow-hidden bg-neutral-900 cursor-pointer aspect-square">
-        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" data-alt="Minimal concrete spiral staircase" src="5.jpg"/>
+        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" src="5.jpg"/>
       </div>
       <div class="group relative overflow-hidden bg-neutral-900 cursor-pointer aspect-square">
-        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" data-alt="Panoramic view of a serene lake" src="6.jpg"/>
+        <img class="w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-80" src="6.jpg"/>
       </div>
     </div>
   </main>
 </div>
 
-<!-- Lightbox Modal -->
 <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/95 opacity-0 pointer-events-none transition-opacity duration-300" id="lightbox">
   <button class="absolute top-8 right-8 text-white hover:opacity-50 transition-opacity z-50">
     <span class="material-symbols-outlined text-4xl">close</span>
